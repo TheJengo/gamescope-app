@@ -1,3 +1,3 @@
 export const Endpoints: any = {
-  api: 'http://localhost:5000/api/',
+  api: 'https://gamescope-api.azurewebsites.net/api/',
 };

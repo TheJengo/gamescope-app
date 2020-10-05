@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
 
-### [Demo](https://gamescope.herokuapp.com/)
+### [Demo](https://gamescope.herokuapp.com/) - [Backend](https://github.com/TheJengo/GameScope)
 You can visit and rate the games now.
 
 ## Development server

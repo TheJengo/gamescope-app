@@ -1,5 +1,7 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()" class="form-register">
-  <h2 class="mt-5">Register to GameScope <fa-icon [icon]="faGamepad"></fa-icon></h2>
+  <h2 class="mt-5">
+    Register to GameScope <fa-icon [icon]="faGamepad"></fa-icon>
+  </h2>
   <div class="form-group">
     <input
       type="text"
@@ -91,4 +93,6 @@
   >
     Register
   </button>
+  <hr />
+  <a class="btn btn-primary btn-block" href="/auth/login">Sign In</a>
 </form>

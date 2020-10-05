@@ -1,0 +1,103 @@
+<main role="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form
+          [formGroup]="gameUpdateForm"
+          (ngSubmit)="updateGame()"
+          class="form-gameupdate"
+        >
+          <div class="form-group">
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+              placeholder="Game name"
+              autofocus
+            />
+            <span
+              class="help-block"
+              *ngIf="
+                gameUpdateForm.get('name').hasError('required') &&
+                gameUpdateForm.get('name').touched
+              "
+            >
+              Name is required.
+            </span>
+            <span
+              class="help-block"
+              *ngIf="
+                gameUpdateForm.get('name').hasError('maxLength') &&
+                gameUpdateForm.get('name').touched
+              "
+            >
+              Name can be max 250 characters.
+            </span>
+            <span
+              class="help-block"
+              *ngIf="
+                gameUpdateForm.get('name').hasError('minLength') &&
+                gameUpdateForm.get('name').touched
+              "
+            >
+              Name can be min 3 characters.
+            </span>
+          </div>
+          <div class="formg-group">
+            <input
+              type="date"
+              id="releaseDate"
+              formControlName="releaseDate"
+              class="form-control"
+              placeholder="Release date"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              type="text"
+              id="description"
+              formControlName="description"
+              class="form-control"
+              placeholder="Description here..."
+            ></textarea>
+            <span
+              class="help-block"
+              *ngIf="
+                gameUpdateForm.get('description').hasError('required') &&
+                gameUpdateForm.get('description').touched
+              "
+            >
+              Description is required.
+            </span>
+            <span
+              class="help-block"
+              *ngIf="
+                gameUpdateForm.get('description').hasError('maxLength') &&
+                gameUpdateForm.get('description').touched
+              "
+            >
+              Description can be max 250 characters.
+            </span>
+            <span
+              class="help-block"
+              *ngIf="
+                gameUpdateForm.get('description').hasError('minLength') &&
+                gameUpdateForm.get('description').touched
+              "
+            >
+              Description can be min 3 characters.
+            </span>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-lg btn-primary btn-block"
+            [disabled]="!gameUpdateForm.valid"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>

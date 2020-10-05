@@ -1,0 +1,94 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()" class="form-register">
+  <h2 class="mt-5">Register to GameScope <fa-icon [icon]="faGamepad"></fa-icon></h2>
+  <div class="form-group">
+    <input
+      type="text"
+      id="email"
+      name="email"
+      formControlName="email"
+      class="form-control"
+      placeholder="your@mail.com"
+      autofocus
+    />
+    <span
+      class="help-block"
+      *ngIf="
+        registerForm.get('email').hasError('email') &&
+        registerForm.get('email').touched
+      "
+      >Email required.
+    </span>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      class="form-control"
+      placeholder="Şifre"
+    />
+    <span
+      class="help-block"
+      *ngIf="
+        registerForm.get('password').hasError('required') &&
+        registerForm.get('password').touched
+      "
+    >
+      Password required.
+    </span>
+    <span
+      class="help-block"
+      *ngIf="
+        registerForm.get('password').hasError('minlength') &&
+        registerForm.get('password').touched
+      "
+    >
+      Password min length must be greater than 3 characters.
+    </span>
+    <span
+      class="help-block"
+      *ngIf="
+        registerForm.get('password').hasError('maxlength') &&
+        registerForm.get('password').touched
+      "
+    >
+      Password max length must be lower than 100 characters.
+    </span>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      id="confirmPassword"
+      name="confirmPassword"
+      formControlName="confirmPassword"
+      class="form-control"
+      placeholder="Şifre"
+    />
+    <span
+      class="help-block"
+      *ngIf="
+        registerForm.get('confirmPassword').hasError('required') &&
+        registerForm.get('confirmPassword').touched
+      "
+    >
+      Confirm Password required.
+    </span>
+    <span
+      class="help-block"
+      *ngIf="
+        registerForm.get('confirmPassword').touched &&
+        registerForm.hasError('mismatch')
+      "
+    >
+      Confirm Password and password are not matched.
+    </span>
+  </div>
+  <button
+    class="btn btn-lg btn-primary btn-block"
+    [disabled]="!registerForm.valid"
+    type="submit"
+  >
+    Register
+  </button>
+</form>

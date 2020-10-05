@@ -1,0 +1,43 @@
+<form
+  *ngIf="!isAuthenticated"
+  #loginForm="ngForm"
+  (ngSubmit)="login()"
+  class="form-login"
+>
+  <h2 class="mt-5">Welcome to GameScope <fa-icon [icon]="faHand"></fa-icon></h2>
+  <div class="form-group">
+    <input
+      class="form-control"
+      name="email"
+      [(ngModel)]="loginUser.email"
+      required
+      email
+      type="text"
+      placeholder="Email"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      class="form-control"
+      name="password"
+      [(ngModel)]="loginUser.password"
+      required
+      type="password"
+      placeholder="Password"
+    />
+  </div>
+  <div style="text-align: center">
+    <button
+      class="btn btn-primary btn-block"
+      [disabled]="!loginForm.valid"
+      type="submit"
+    >
+      Sign In
+    </button>
+    <hr />
+    <button class="btn btn-primary btn-block" [routerLink]="['/register']">
+      Sign-Up
+    </button>
+  </div>
+</form>

@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row" style="margin-top: 5px; max-height: 720px">
+    <div class="card mb-6">
+      <h3 class="card-header">{{ game.name }}</h3>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <h6 class="card-subtitle text-muted"></h6>
+      </div>
+      <h1 style="text-align: center" class="">
+        {{ game.ratingAverage }} <small>/ 10</small>
+      </h1>
+      <div class="card-body">
+        <p class="card-text">
+          {{ game.description }}
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          Release Date:{{ game.releaseDate | date: "fullDate" }}
+        </li>
+        <li class="list-group-item">Owner: {{ game.owner }}</li>
+        <li class="list-group-item">Total Ratings: {{ game.totalRatings }}</li>
+      </ul>
+      <div class="card-body d-flex justify-content-center" *ngIf="isOwner">
+        <a (click)="open(content)" class="card-link"
+          ><fa-icon [icon]="faPen"></fa-icon> Edit</a
+        >
+        <a (click)="open(delete)" class="card-link"><fa-icon [icon]="faThrash"></fa-icon> Delete</a>
+      </div>
+      <div class="card-footer text-muted">
+        <fa-icon [icon]="faClock"></fa-icon>
+        {{
+          (game.updatedDate == null ? game.createdDate : game.updatedDate)
+            | timeago
+        }}
+      </div>
+    </div>
+    <div class="card mb-12">
+      <div class="card-body">
+        <h4 class="card-title">Rating</h4>
+        <app-star></app-star>
+        <div>
+          <ul style="min-width: 720px" class="list-group list-group-flush">
+            <li *ngFor="let rate of game.ratings" class="list-group-item">
+              <small class="badge badge-primary">{{ rate.value }} / 10</small>
+              {{ rate.owner }}
+              <small class="mr-1"
+                ><fa-icon [icon]="faClock"></fa-icon
+                >{{ rate.date | timeago }}</small
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update Game</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-game-update></app-game-update>
+      </div>
+      <div class="modal-footer"></div>
+    </ng-template>
+
+    <ng-template #delete let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Game deletion</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close button"
+          aria-describedby="modal-title"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <strong
+            >Are you sure you want to delete
+            <span class="text-primary">{{ game.name }}</span> game?</strong
+          >
+        </p>
+        <p>
+          All information associated to this game will be permanently deleted.
+          <span class="text-danger">This operation can not be undone.</span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="modal.dismiss('cancel click')"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          ngbAutofocus
+          class="btn btn-danger"
+          (click)="deleteGame(game.id)"
+        >
+          Ok
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>

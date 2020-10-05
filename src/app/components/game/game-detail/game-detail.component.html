@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row" style="margin-top: 5px; max-height: 720px">
+  <div class="row text-left text-wrap text-break text-justify" style="margin-top: 5px; max-height: 720px">
     <div class="card mb-6">
       <h3 class="card-header">{{ game.name }}</h3>
       <div class="card-body">
@@ -9,8 +9,8 @@
       <h1 style="text-align: center" class="">
         {{ game.ratingAverage }} <small>/ 10</small>
       </h1>
-      <div class="card-body">
-        <p class="card-text">
+      <div class="card-body" style="max-width: 250px;">
+        <p class="card-text" style="max-width: 250px;">
           {{ game.description }}
         </p>
       </div>

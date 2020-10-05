@@ -23,8 +23,7 @@ import { AuthService } from './services/auth.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginGuard } from './components/auth/login/login.guard';
 import { TokenInterceptor } from './interceptors/token-interceptor';
-import { StarComponent } from './components/rating/star/Star.component';
-import { GameUpdate } from './models/gameUpdate';
+import { StarComponent } from './components/rating/star/star.component';
 import { GameUpdateComponent } from './components/game/game-update/game-update.component';
 
 @NgModule({

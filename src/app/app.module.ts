@@ -11,7 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from '../app/configs/routes';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { GameDetailComponent } from './components/game/game-detail/game-detail.component';
 import { GameCreateComponent } from './components/game/game-create/game-create.component';
 import { NgxEditorModule } from 'ngx-editor';
@@ -58,6 +58,7 @@ import { GameUpdateComponent } from './components/game/game-update/game-update.c
     AuthService,
     LoginGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
 })
